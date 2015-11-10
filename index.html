@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>timkl.xyz</title>
+        <link rel="stylesheet" href="http://timkl.xyz/theme/css/main.css" />
+        <link href="http://timkl.xyz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="timkl.xyz Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://timkl.xyz/">timkl.xyz </a></h1>
+                <nav><ul>
+                    <li><a href="http://timkl.xyz/category/android.html">Android</a></li>
+                    <li><a href="http://timkl.xyz/category/git.html">Git</a></li>
+                    <li><a href="http://timkl.xyz/category/linux.html">Linux</a></li>
+                    <li><a href="http://timkl.xyz/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://timkl.xyz/customize-default-pelican-theme.html">Customize Default Pelican Theme</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-09-17T22:50:18+02:00">
+                Published: Tue 17 September 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info --><p>I wanted to customize the default theme of Pelican but didn't want to copy single
+template files or to edit the files in the python path.</p>
+<p>In the docs you can find how you install, remove and list themes <a href="http://docs.getpelican.com/en/3.2/pelican-themes.html" title="Pelican Themes">[1]</a></p>
+<div class="highlight"><pre>pelican-themes -v -l
+</pre></div>
+
+
+<p>You'll get some output like this</p>
+<div class="highlight"><pre>/home/tim/.virtualenvs/pelican-blog/lib/python2.7/site-packages/pelican/themes/simple
+/home/tim/.virtualenvs/pelican-blog/lib/python2.7/site-packages/pelican/themes/notmyidea
+</pre></div>
+
+
+<p>So what I did:</p>
+<ol>
+<li>Go to your root blog folder</li>
+<li>Then copy the complete &quot;<code>&lt;span class="n"&gt;notmyidea&lt;/span&gt;</code>&quot; folder to your current pelican root folder</li>
+</ol>
+<div class="highlight"><pre><span class="c"># Create themes folder</span>
+mkdir themes
+<span class="c"># Copy the folder</span>
+cp -R /home/tim/.virtualenvs/pelican-blog/lib/python2.7/site-packages/pelican/themes/notmyidea themes/
+</pre></div>
+
+
+<ol>
+<li>After it you have to define in your <em>pelicanconf.py</em> a theme variable <em>THEME</em>. <a href="http://docs.getpelican.com/en/3.2/settings.html#themes" title="Themes Documentation">[2]</a>
+What gets linked to the copied theme folder!</li>
+</ol>
+<div class="highlight"><pre><span class="n">THEME</span> <span class="o">=</span> <span class="s">&quot;themes/notmyidea&quot;</span>
+</pre></div>
+
+
+<ol>
+<li>Now you are in the state to customize the default template to your style.</li>
+</ol>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://timkl.xyz/python-strip-tags-from-a-string.html" rel="bookmark"
+                           title="Permalink to Python - Strip tags from a String">Python - Strip tags from a String</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-08-18T23:21:00+02:00">
+                Published: Sun 18 August 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>This is a little snippet to remove tags from a string to get the only raw textual content. I'm using the Beautiful Soup Library <a href="#f1">[1]</a> for this job.</p>
+<p>Install Beautifulsoup with pip:</p>
+<div class="highlight"><pre>pip install beautifulsoup4
+</pre></div>
+
+
+<p>Example:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="n">html</span> <span class="o">=</span> <span class="s">&quot;&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;&amp;lt;h1 ...</span></pre></div>
+                <a class="readmore" href="http://timkl.xyz/python-strip-tags-from-a-string.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://timkl.xyz/upgrading-cyanogenmod-or-any-other-android-rom-on-an-encrypted-nexus-4-device.html" rel="bookmark"
+                           title="Permalink to Upgrading CyanogenMod or any other Android ROM on an encrypted Nexus 4 device">Upgrading CyanogenMod or any other Android ROM on an encrypted Nexus 4 device</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-07-30T22:02:00+02:00">
+                Published: Tue 30 July 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/android.html">Android</a>.</p>
+
+</footer><!-- /.post-info -->                <p>I got a following problem that I was not be able to update my phone from my recovery mode. I'm using <a href="http://www.clockworkmod.com/rommanager">ClockworkMod</a>.</p>
+<p>So I searched around the web and found a very easy way to update my Nexus 4</p>
+<ol>
+<li>Connect your Nexus with the USB cabel with your computer ...</li></ol>
+                <a class="readmore" href="http://timkl.xyz/upgrading-cyanogenmod-or-any-other-android-rom-on-an-encrypted-nexus-4-device.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://timkl.xyz/django-reversing-admin-urls-in-templates.html" rel="bookmark"
+                           title="Permalink to Django - Reversing admin URLs in Templates">Django - Reversing admin URLs in Templates</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-04-04T17:11:00+02:00">
+                Published: Thu 04 April 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="n">raw</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">url</span> <span class="n">admin</span><span class="p">:</span><span class="n">index</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">url</span> <span class="n">admin</span><span class="p">:</span><span class="n">polls_choice_add</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">url</span> <span class="n">admin</span><span class="p">:</span><span class="n">polls_choice_change</span> <span class="n">choice</span><span class="o">.</span><span class="n">id</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="c"># For Django 1.5. Thanks to Kenneth Love</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">url</span> <span class="s">&#39;admin:index&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">url</span> <span class="s">&#39;admin:polls_choice_add&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">url</span> <span class="s">&#39;admin:polls_choice_change&#39;</span> <span class="n">choice</span><span class="o">.</span><span class="n">id</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endraw</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+
+
+<p>With this Code Examples you can manage to get the right url in the templates where you want ...</p>
+                <a class="readmore" href="http://timkl.xyz/django-reversing-admin-urls-in-templates.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://timkl.xyz/reinstall-grub2-with-arch-linux-live-cd-usb-key.html" rel="bookmark"
+                           title="Permalink to Reinstall GRUB2 with arch linux live cd / usb key">Reinstall GRUB2 with arch linux live cd / usb key</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-03-30T18:23:00+01:00">
+                Published: Sat 30 March 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/linux.html">Linux</a>.</p>
+
+</footer><!-- /.post-info -->                <p>So I had to reinstall my Windows 8 in my dual boot system with Arch
+Linux. After the reinstall I had the default boot manager of Windows
+back in place of GRUB2.</p>
+<p>My way to fix it, was to install on my USB key the current live CD of
+archlinux ...</p>
+                <a class="readmore" href="http://timkl.xyz/reinstall-grub2-with-arch-linux-live-cd-usb-key.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://timkl.xyz/git-rename-a-git-branch.html" rel="bookmark"
+                           title="Permalink to Git - Rename a git branch">Git - Rename a git branch</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-06-28T13:21:00+02:00">
+                Published: Thu 28 June 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/git.html">Git</a>.</p>
+
+</footer><!-- /.post-info -->                <p>To rename a branch is very easy to need only the next command for it.</p>
+<p>(-m means “Move/rename a branch and the corresponding reflog.”)</p>
+<div class="highlight"><pre>    git branch -m old_branch_name new_branch_name
+</pre></div>
+                <a class="readmore" href="http://timkl.xyz/git-rename-a-git-branch.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://timkl.xyz/django-optional-foreignkey.html" rel="bookmark"
+                           title="Permalink to Django - Optional ForeignKey">Django - Optional ForeignKey</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-06-08T13:21:00+02:00">
+                Published: Fri 08 June 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Do make an optional Foreignkey in Django you have set <code>blank=True</code> and <code>null=True</code>.</p>
+                <a class="readmore" href="http://timkl.xyz/django-optional-foreignkey.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://timkl.xyz/git-empthy-folder-in-git.html" rel="bookmark"
+                           title="Permalink to Git - Empthy folder in Git">Git - Empthy folder in Git</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-05-31T17:25:00+02:00">
+                Published: Thu 31 May 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/git.html">Git</a>.</p>
+
+</footer><!-- /.post-info -->                <p><strong>How do I add an empty directory to a git repository</strong></p>
+<p>The solution is:</p>
+<div class="highlight"><pre># Ignore everything in this directory
+*
+# Except this file
+!.gitignore
+</pre></div>
+
+
+<p><strong>For your interest:</strong></p>
+<p><a href="http://stackoverflow.com/questions/115983/how-do-i-add-an-empty-directory-to-a-git-repository/">Stackoverflow Question</a></p>
+                <a class="readmore" href="http://timkl.xyz/git-empthy-folder-in-git.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://timkl.xyz/pycon-2012-stop-writing-classes.html" rel="bookmark"
+                           title="Permalink to Pycon 2012 - Stop Writing Classes">Pycon 2012 - Stop Writing Classes</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-03-23T12:55:00+01:00">
+                Published: Fri 23 March 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Classes are great but they are also overused. This talk will describe examples of class overuse taken from real world code and refactor the unnecessary classes, exceptions, and modules out of them.</p>
+<p>o9pEzgHorH0</p>
+                <a class="readmore" href="http://timkl.xyz/pycon-2012-stop-writing-classes.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://timkl.xyz/django-pre-validation-with-the-url-dispatcher.html" rel="bookmark"
+                           title="Permalink to Django - Pre-Validation with the URL dispatcher">Django - Pre-Validation with the URL dispatcher</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-03-22T15:20:00+01:00">
+                Published: Thu 22 March 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info -->                <p>I work currently on a rating feature, to rate some items and I want to do this
+in one view to handle the methods <em>POST</em> and <em>GET</em>.</p>
+<p><em>POST</em> should handle the submit request(rate count) of the item</p>
+<p><em>GET</em> should handle the template with the right item to see the ...</p>
+                <a class="readmore" href="http://timkl.xyz/django-pre-validation-with-the-url-dispatcher.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="http://timkl.xyz/index2.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://timkl.xyz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://github.com/Azd325">Github</a></li>
+                            <li><a href="https://twitter.com/Azd325">Twitter</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-69909424-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>

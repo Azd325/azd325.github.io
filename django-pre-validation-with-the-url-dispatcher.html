@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Django - Pre-Validation with the URL dispatcher</title>
+        <link rel="stylesheet" href="http://timkl.xyz/theme/css/main.css" />
+        <link href="http://timkl.xyz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="timkl.xyz Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://timkl.xyz/">timkl.xyz </a></h1>
+                <nav><ul>
+                    <li><a href="http://timkl.xyz/category/android.html">Android</a></li>
+                    <li><a href="http://timkl.xyz/category/git.html">Git</a></li>
+                    <li><a href="http://timkl.xyz/category/linux.html">Linux</a></li>
+                    <li class="active"><a href="http://timkl.xyz/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://timkl.xyz/django-pre-validation-with-the-url-dispatcher.html" rel="bookmark"
+           title="Permalink to Django - Pre-Validation with the URL dispatcher">Django - Pre-Validation with the URL dispatcher</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-03-22T15:20:00+01:00">
+                Published: Thu 22 March 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info -->      <p>I work currently on a rating feature, to rate some items and I want to do this
+in one view to handle the methods <em>POST</em> and <em>GET</em>.</p>
+<p><em>POST</em> should handle the submit request(rate count) of the item</p>
+<p><em>GET</em> should handle the template with the right item to see the current
+user/ global rate</p>
+<p><strong>Situation:</strong></p>
+<ul>
+<li>max. stars = five</li>
+<li>min. stars = one</li>
+<li>zero stars are not possible to vote</li>
+</ul>
+<p><strong>What we need to rate?</strong></p>
+<ul>
+<li>item id</li>
+<li>vote result</li>
+</ul>
+<p>I start to add the first version of the view and I was adding two URL's one for <em>GET</em> and one for <em>POST</em>.
+And I what to handle the parameter over the named groups in Django.</p>
+<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^ajax/votes/(?P&lt;item_id&gt;\w+)/$&#39;</span><span class="p">,</span> <span class="s">&#39;vote_for_item&#39;</span><span class="p">),</span>  <span class="c"># GET</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^ajax/votes/(?P&lt;item_id&gt;\w+)/(?P&lt;vote&gt;\d+)/$&#39;</span><span class="p">,</span> <span class="s">&#39;vote_for_item&#39;</span><span class="p">)</span>  <span class="c"># POST</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p><em>What we can to be more explicit?</em></p>
+<p>We can use <code>re</code> of Python and so we can set a range of allowed numbers with <code>[1-5]</code>.
+So we have only a range of URL's for every state of the rating situation and so we get a <em>404</em> if we want to access for example the vote-URL with the vote count of six.</p>
+<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^ajax/votes/(?P&lt;item_id&gt;\w+)/$&#39;</span><span class="p">,</span> <span class="s">&#39;vote_for_item&#39;</span><span class="p">),</span>  <span class="c"># GET</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^ajax/votes/(?P&lt;item_id&gt;\w+)/(?P&lt;vote&gt;[1-5])/$&#39;</span><span class="p">,</span> <span class="s">&#39;vote_for_item&#39;</span><span class="p">)</span>  <span class="c"># POST</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>The next thing we have to two exact same URL's the only difference is that the <em>POST</em> needs an extra parameter.</p>
+<p><em>Can we make this parameter optional?</em></p>
+<p>Yeah, we can do it again with <code>re</code>. We have to wrap the vote part in <code>(?:...)</code> and after it a single <code>?</code>. More in the Python Docs.</p>
+<p><strong>The end solution:</strong></p>
+<p>I have one URL for the cases of <em>GET</em> and <em>POST</em> and we create only the URL's what I need for the rating feature</p>
+<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^ajax/votes/(?P&lt;item_id&gt;\w+)/(:?(?P&lt;vote&gt;[1-5])/)?$&#39;</span><span class="p">,</span> <span class="s">&#39;vote_for_item&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p><strong>FYI:</strong></p>
+<p><a href="http://stackoverflow.com/questions/8270439/optional-named-groups-python-re" title="Stackoverflow Question">Optional named groups Python re</a></p>
+<p><a href="https://docs.djangoproject.com/en/dev/topics/http/urls/" title="Django documentation">URL dispatcher at Django Docs</a></p>
+<p><a href="http://docs.python.org/library/re.html" title="Python documentation">re at Python Docs</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://timkl.xyz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://github.com/Azd325">Github</a></li>
+                            <li><a href="https://twitter.com/Azd325">Twitter</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-69909424-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>

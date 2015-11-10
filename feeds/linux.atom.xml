@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>timkl.xyz</title><link href="http://timkl.xyz/" rel="alternate"></link><link href="http://timkl.xyz/feeds/linux.atom.xml" rel="self"></link><id>http://timkl.xyz/</id><updated>2013-03-30T18:23:00+01:00</updated><entry><title>Reinstall GRUB2 with arch linux live cd / usb key</title><link href="http://timkl.xyz/reinstall-grub2-with-arch-linux-live-cd-usb-key.html" rel="alternate"></link><updated>2013-03-30T18:23:00+01:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2013-03-30:reinstall-grub2-with-arch-linux-live-cd-usb-key.html</id><summary type="html">&lt;p&gt;So I had to reinstall my Windows 8 in my dual boot system with Arch
+Linux. After the reinstall I had the default boot manager of Windows
+back in place of GRUB2.&lt;/p&gt;
+&lt;p&gt;My way to fix it, was to install on my USB key the current live CD of
+archlinux &lt;a href="https://www.archlinux.org/download/" title="Current live cd from Archlinux"&gt;Download here&lt;/a&gt;. Burn it to CD or copy it to your USB key with&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    dd &lt;span class="nv"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4M &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/archlinux.iso &lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/sdx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After the installing of the live CD to my USB key. I was restarting my
+PC to boot from it. Afterwards I got the default arch Linux shell.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li&gt;I was creating a root point for my root disk in /mnt/root/&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    mkdir /mnt/root/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Now I can mount the root partition to this point&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    mount /dev/sdXX /mnt/root
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Now I had to change the root. This command also adds the necessary
+    folders like (proc, dev,…)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    arch-chroot /mnt/root
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;I have a separate boot partition so I had to mount this also to my
+    chroot system&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    mount /boot
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Regenerate the &lt;strong&gt;grub.cfg&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    grub-mkconfig -o /boot/grub/grub.cfg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;So, it’s nearly done! I had only to install Grub back in the MBR&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    grub-install /dev/sdXX
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Last not but least. Rebooted and it was working&lt;/p&gt;</summary></entry></feed>

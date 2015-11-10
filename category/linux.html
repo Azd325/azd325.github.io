@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>timkl.xyz - Linux</title>
+        <link rel="stylesheet" href="http://timkl.xyz/theme/css/main.css" />
+        <link href="http://timkl.xyz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="timkl.xyz Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://timkl.xyz/">timkl.xyz </a></h1>
+                <nav><ul>
+                    <li><a href="http://timkl.xyz/category/android.html">Android</a></li>
+                    <li><a href="http://timkl.xyz/category/git.html">Git</a></li>
+                    <li class="active"><a href="http://timkl.xyz/category/linux.html">Linux</a></li>
+                    <li><a href="http://timkl.xyz/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://timkl.xyz/reinstall-grub2-with-arch-linux-live-cd-usb-key.html">Reinstall GRUB2 with arch linux live cd / usb key</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-03-30T18:23:00+01:00">
+                Published: Sat 30 March 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://timkl.xyz/author/tim-kleinschmidt.html">Tim Kleinschmidt</a>
+        </address>
+<p>In <a href="http://timkl.xyz/category/linux.html">Linux</a>.</p>
+
+</footer><!-- /.post-info --><p>So I had to reinstall my Windows 8 in my dual boot system with Arch
+Linux. After the reinstall I had the default boot manager of Windows
+back in place of GRUB2.</p>
+<p>My way to fix it, was to install on my USB key the current live CD of
+archlinux <a href="https://www.archlinux.org/download/" title="Current live cd from Archlinux">Download here</a>. Burn it to CD or copy it to your USB key with</p>
+<div class="highlight"><pre>    dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=</span>/path/to/archlinux.iso <span class="nv">of</span><span class="o">=</span>/dev/sdx
+</pre></div>
+
+
+<p>After the installing of the live CD to my USB key. I was restarting my
+PC to boot from it. Afterwards I got the default arch Linux shell.</p>
+<hr />
+<ol>
+<li>I was creating a root point for my root disk in /mnt/root/</li>
+</ol>
+<div class="highlight"><pre>    mkdir /mnt/root/
+</pre></div>
+
+
+<ol>
+<li>Now I can mount the root partition to this point</li>
+</ol>
+<div class="highlight"><pre>    mount /dev/sdXX /mnt/root
+</pre></div>
+
+
+<ol>
+<li>Now I had to change the root. This command also adds the necessary
+    folders like (proc, dev,…)</li>
+</ol>
+<div class="highlight"><pre>    arch-chroot /mnt/root
+</pre></div>
+
+
+<ol>
+<li>I have a separate boot partition so I had to mount this also to my
+    chroot system</li>
+</ol>
+<div class="highlight"><pre>    mount /boot
+</pre></div>
+
+
+<ol>
+<li>Regenerate the <strong>grub.cfg</strong></li>
+</ol>
+<div class="highlight"><pre>    grub-mkconfig -o /boot/grub/grub.cfg
+</pre></div>
+
+
+<ol>
+<li>So, it’s nearly done! I had only to install Grub back in the MBR</li>
+</ol>
+<div class="highlight"><pre>    grub-install /dev/sdXX
+</pre></div>
+
+
+<p>Last not but least. Rebooted and it was working</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://timkl.xyz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://github.com/Azd325">Github</a></li>
+                            <li><a href="https://twitter.com/Azd325">Twitter</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-69909424-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>
