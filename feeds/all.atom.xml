@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>timkl.xyz</title><link href="http://timkl.xyz/" rel="alternate"></link><link href="http://timkl.xyz/feeds/all.atom.xml" rel="self"></link><id>http://timkl.xyz/</id><updated>2013-09-17T22:50:18+02:00</updated><entry><title>Customize Default Pelican Theme</title><link href="http://timkl.xyz/customize-default-pelican-theme.html" rel="alternate"></link><updated>2013-09-17T22:50:18+02:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2013-09-17:customize-default-pelican-theme.html</id><summary type="html">&lt;p&gt;I wanted to customize the default theme of Pelican but didn't want to copy single
+template files or to edit the files in the python path.&lt;/p&gt;
+&lt;p&gt;In the docs you can find how you install, remove and list themes &lt;a href="http://docs.getpelican.com/en/3.2/pelican-themes.html" title="Pelican Themes"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican-themes -v -l
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You'll get some output like this&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;/home/tim/.virtualenvs/pelican-blog/lib/python2.7/site-packages/pelican/themes/simple
+/home/tim/.virtualenvs/pelican-blog/lib/python2.7/site-packages/pelican/themes/notmyidea
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So what I did:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to your root blog folder&lt;/li&gt;
+&lt;li&gt;Then copy the complete &amp;quot;&lt;code&gt;&amp;lt;span class="n"&amp;gt;notmyidea&amp;lt;/span&amp;gt;&lt;/code&gt;&amp;quot; folder to your current pelican root folder&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Create themes folder&lt;/span&gt;
+mkdir themes
+&lt;span class="c"&gt;# Copy the folder&lt;/span&gt;
+cp -R /home/tim/.virtualenvs/pelican-blog/lib/python2.7/site-packages/pelican/themes/notmyidea themes/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;After it you have to define in your &lt;em&gt;pelicanconf.py&lt;/em&gt; a theme variable &lt;em&gt;THEME&lt;/em&gt;. &lt;a href="http://docs.getpelican.com/en/3.2/settings.html#themes" title="Themes Documentation"&gt;[2]&lt;/a&gt;
+What gets linked to the copied theme folder!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;themes/notmyidea&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Now you are in the state to customize the default template to your style.&lt;/li&gt;
+&lt;/ol&gt;</summary></entry><entry><title>Python - Strip tags from a String</title><link href="http://timkl.xyz/python-strip-tags-from-a-string.html" rel="alternate"></link><updated>2013-08-18T23:21:00+02:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2013-08-18:python-strip-tags-from-a-string.html</id><summary type="html">&lt;p&gt;This is a little snippet to remove tags from a string to get the only raw textual content. I'm using the Beautiful Soup Library &lt;a href="#f1"&gt;[1]&lt;/a&gt; for this job.&lt;/p&gt;
+&lt;p&gt;Install Beautifulsoup with pip:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install beautifulsoup4
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;
+&lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;amp;lt;html&amp;amp;gt;&amp;amp;lt;body&amp;amp;gt;&amp;amp;lt;h1&amp;amp;gt;Test&amp;amp;lt;/h1&amp;amp;gt;&amp;amp;lt;body&amp;amp;gt;&amp;amp;lt;html&amp;amp;gt;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_text&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Upgrading CyanogenMod or any other Android ROM on an encrypted Nexus 4 device</title><link href="http://timkl.xyz/upgrading-cyanogenmod-or-any-other-android-rom-on-an-encrypted-nexus-4-device.html" rel="alternate"></link><updated>2013-07-30T22:02:00+02:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2013-07-30:upgrading-cyanogenmod-or-any-other-android-rom-on-an-encrypted-nexus-4-device.html</id><summary type="html">&lt;p&gt;I got a following problem that I was not be able to update my phone from my recovery mode. I'm using &lt;a href="http://www.clockworkmod.com/rommanager"&gt;ClockworkMod&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So I searched around the web and found a very easy way to update my Nexus 4&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Connect your Nexus with the USB cabel with your computer&lt;/li&gt;
+&lt;li&gt;Download the CyanogenMod package you want to install, from &lt;a href="http://get.cm/?device=mako"&gt;http://get.cm/?device=mako&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Boot the recovery mode&lt;/li&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;install zip&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Navigate then to &lt;strong&gt;insall zip from sideload&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;You need now the &lt;strong&gt;Android Platform Tools&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Open your terminal now&lt;/li&gt;
+&lt;li&gt;Type now &lt;strong&gt;&amp;quot;adb sideload cyanogenmod.zip&amp;quot;&lt;/strong&gt; (cyanogenmod.zip is the downloaded package from the second step)&lt;/li&gt;
+&lt;li&gt;After it reboot you phone&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Bonus Tip:
+*   If you have problems with the Wifi on your Nexus 4 try the &lt;a href="http://forum.xda-developers.com/showthread.php?t=2300873"&gt;WifiFix&lt;/a&gt; from kalo86 on the same way what is describe in points above&lt;/p&gt;</summary></entry><entry><title>Django - Reversing admin URLs in Templates</title><link href="http://timkl.xyz/django-reversing-admin-urls-in-templates.html" rel="alternate"></link><updated>2013-04-04T17:11:00+02:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2013-04-04:django-reversing-admin-urls-in-templates.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;raw&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;polls_choice_add&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;polls_choice_change&lt;/span&gt; &lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;# For Django 1.5. Thanks to Kenneth Love&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;admin:index&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;admin:polls_choice_add&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;admin:polls_choice_change&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;endraw&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;With this Code Examples you can manage to get the right url in the templates where you want.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Is the index url of the admin.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Is the add url for the App Polls with the Model Choice.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Is the change url for the App Polls with the Model Choice and with Parameter for that object what you want to change.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The principe is &lt;em&gt;{{ app_label }}_{{ model_name }}_change object_id&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This help me today a lot at work.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For you interest:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.djangoproject.com/en/dev/ref/contrib/admin/#reversing-admin-urls/" title="Django Docs: Reversing Admin Urls"&gt;Django Docs:Reversing Admin Urls&lt;/a&gt;
+&lt;a href="http://gigantuan.net/" title="Kenneth Love"&gt;Kenneth Love&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>Reinstall GRUB2 with arch linux live cd / usb key</title><link href="http://timkl.xyz/reinstall-grub2-with-arch-linux-live-cd-usb-key.html" rel="alternate"></link><updated>2013-03-30T18:23:00+01:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2013-03-30:reinstall-grub2-with-arch-linux-live-cd-usb-key.html</id><summary type="html">&lt;p&gt;So I had to reinstall my Windows 8 in my dual boot system with Arch
+Linux. After the reinstall I had the default boot manager of Windows
+back in place of GRUB2.&lt;/p&gt;
+&lt;p&gt;My way to fix it, was to install on my USB key the current live CD of
+archlinux &lt;a href="https://www.archlinux.org/download/" title="Current live cd from Archlinux"&gt;Download here&lt;/a&gt;. Burn it to CD or copy it to your USB key with&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    dd &lt;span class="nv"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4M &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/archlinux.iso &lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/sdx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After the installing of the live CD to my USB key. I was restarting my
+PC to boot from it. Afterwards I got the default arch Linux shell.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li&gt;I was creating a root point for my root disk in /mnt/root/&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    mkdir /mnt/root/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Now I can mount the root partition to this point&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    mount /dev/sdXX /mnt/root
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Now I had to change the root. This command also adds the necessary
+    folders like (proc, dev,…)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    arch-chroot /mnt/root
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;I have a separate boot partition so I had to mount this also to my
+    chroot system&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    mount /boot
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Regenerate the &lt;strong&gt;grub.cfg&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    grub-mkconfig -o /boot/grub/grub.cfg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;So, it’s nearly done! I had only to install Grub back in the MBR&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    grub-install /dev/sdXX
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Last not but least. Rebooted and it was working&lt;/p&gt;</summary></entry><entry><title>Git - Rename a git branch</title><link href="http://timkl.xyz/git-rename-a-git-branch.html" rel="alternate"></link><updated>2012-06-28T13:21:00+02:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2012-06-28:git-rename-a-git-branch.html</id><summary type="html">&lt;p&gt;To rename a branch is very easy to need only the next command for it.&lt;/p&gt;
+&lt;p&gt;(-m means “Move/rename a branch and the corresponding reflog.”)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    git branch -m old_branch_name new_branch_name
+&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Django - Optional ForeignKey</title><link href="http://timkl.xyz/django-optional-foreignkey.html" rel="alternate"></link><updated>2012-06-08T13:21:00+02:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2012-06-08:django-optional-foreignkey.html</id><summary type="html">&lt;p&gt;Do make an optional Foreignkey in Django you have set &lt;code&gt;blank=True&lt;/code&gt; and &lt;code&gt;null=True&lt;/code&gt;.&lt;/p&gt;</summary></entry><entry><title>Git - Empthy folder in Git</title><link href="http://timkl.xyz/git-empthy-folder-in-git.html" rel="alternate"></link><updated>2012-05-31T17:25:00+02:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2012-05-31:git-empthy-folder-in-git.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;How do I add an empty directory to a git repository&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The solution is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# Ignore everything in this directory
+*
+# Except this file
+!.gitignore
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;For your interest:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/115983/how-do-i-add-an-empty-directory-to-a-git-repository/"&gt;Stackoverflow Question&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>Pycon 2012 - Stop Writing Classes</title><link href="http://timkl.xyz/pycon-2012-stop-writing-classes.html" rel="alternate"></link><updated>2012-03-23T12:55:00+01:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2012-03-23:pycon-2012-stop-writing-classes.html</id><summary type="html">&lt;p&gt;Classes are great but they are also overused. This talk will describe examples of class overuse taken from real world code and refactor the unnecessary classes, exceptions, and modules out of them.&lt;/p&gt;
+&lt;p&gt;o9pEzgHorH0&lt;/p&gt;</summary></entry><entry><title>Django - Pre-Validation with the URL dispatcher</title><link href="http://timkl.xyz/django-pre-validation-with-the-url-dispatcher.html" rel="alternate"></link><updated>2012-03-22T15:20:00+01:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2012-03-22:django-pre-validation-with-the-url-dispatcher.html</id><summary type="html">&lt;p&gt;I work currently on a rating feature, to rate some items and I want to do this
+in one view to handle the methods &lt;em&gt;POST&lt;/em&gt; and &lt;em&gt;GET&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;POST&lt;/em&gt; should handle the submit request(rate count) of the item&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;GET&lt;/em&gt; should handle the template with the right item to see the current
+user/ global rate&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Situation:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;max. stars = five&lt;/li&gt;
+&lt;li&gt;min. stars = one&lt;/li&gt;
+&lt;li&gt;zero stars are not possible to vote&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;What we need to rate?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;item id&lt;/li&gt;
+&lt;li&gt;vote result&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I start to add the first version of the view and I was adding two URL's one for &lt;em&gt;GET&lt;/em&gt; and one for &lt;em&gt;POST&lt;/em&gt;.
+And I what to handle the parameter over the named groups in Django.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^ajax/votes/(?P&amp;lt;item_id&amp;gt;\w+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;vote_for_item&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;  &lt;span class="c"&gt;# GET&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^ajax/votes/(?P&amp;lt;item_id&amp;gt;\w+)/(?P&amp;lt;vote&amp;gt;\d+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;vote_for_item&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# POST&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;What we can to be more explicit?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;We can use &lt;code&gt;re&lt;/code&gt; of Python and so we can set a range of allowed numbers with &lt;code&gt;[1-5]&lt;/code&gt;.
+So we have only a range of URL's for every state of the rating situation and so we get a &lt;em&gt;404&lt;/em&gt; if we want to access for example the vote-URL with the vote count of six.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^ajax/votes/(?P&amp;lt;item_id&amp;gt;\w+)/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;vote_for_item&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;  &lt;span class="c"&gt;# GET&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^ajax/votes/(?P&amp;lt;item_id&amp;gt;\w+)/(?P&amp;lt;vote&amp;gt;[1-5])/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;vote_for_item&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# POST&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The next thing we have to two exact same URL's the only difference is that the &lt;em&gt;POST&lt;/em&gt; needs an extra parameter.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Can we make this parameter optional?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Yeah, we can do it again with &lt;code&gt;re&lt;/code&gt;. We have to wrap the vote part in &lt;code&gt;(?:...)&lt;/code&gt; and after it a single &lt;code&gt;?&lt;/code&gt;. More in the Python Docs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The end solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I have one URL for the cases of &lt;em&gt;GET&lt;/em&gt; and &lt;em&gt;POST&lt;/em&gt; and we create only the URL's what I need for the rating feature&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^ajax/votes/(?P&amp;lt;item_id&amp;gt;\w+)/(:?(?P&amp;lt;vote&amp;gt;[1-5])/)?$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;vote_for_item&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;FYI:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/8270439/optional-named-groups-python-re" title="Stackoverflow Question"&gt;Optional named groups Python re&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.djangoproject.com/en/dev/topics/http/urls/" title="Django documentation"&gt;URL dispatcher at Django Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://docs.python.org/library/re.html" title="Python documentation"&gt;re at Python Docs&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>Django - Setting Headers in your Response</title><link href="http://timkl.xyz/django-setting-headers-in-your-response.html" rel="alternate"></link><updated>2012-03-21T10:20:00+01:00</updated><author><name>Tim Kleinschmidt</name></author><id>tag:timkl.xyz,2012-03-21:django-setting-headers-in-your-response.html</id><summary type="html">&lt;p&gt;Today I found a interesting part in the  &lt;a href="https://docs.djangoproject.com/en/dev/" title="Django Docs"&gt;Django Docs&lt;/a&gt;
+about &lt;strong&gt;set&lt;/strong&gt; and &lt;strong&gt;remove&lt;/strong&gt; of &lt;a href="http://en.wikipedia.org/wiki/List_of_HTTP_header_fields/" title="Wikipedia Article about Headers"&gt;Headers&lt;/a&gt; in responses .&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c"&gt;# Created a HttpResponse&lt;/span&gt;
+&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Cache-Control&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;no-cache&amp;#39;&lt;/span&gt;  &lt;span class="c"&gt;# Set Cache-Control Header&lt;/span&gt;
+&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Cache-Control&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="c"&gt;# Remove Cache-Control Header&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I know that should be do the web server like &lt;a href="http://apache.org/" title="Apache"&gt;Apache&lt;/a&gt; but sometimes is it nicer (even recommended) to set in some
+cases the headers in web app directly, to test the behaviour or to make really sure to get
+the right headers in the response if you don't have anytime access to the
+server config's or a lazy sys-admin.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For you interest:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.djangoproject.com/en/dev/ref/request-response/#setting-headers/" title="Set and Remove in the Django Docs"&gt;Set and Remove in the Django Docs&lt;/a&gt;
+&lt;a href="https://docs.djangoproject.com/en/dev/ref/request-response/#telling-the-browser-to-treat-the-response-as-a-file-attachment/" title="Content-Disposition example"&gt;Content-Disposition example&lt;/a&gt;&lt;/p&gt;</summary></entry></feed>
